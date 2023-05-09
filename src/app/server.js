@@ -17,6 +17,7 @@ app.set('view engine', 'handlebars');
 
 var port = process.env.PORT || 8080;
 var message = process.env.MESSAGE || 'Hello world!';
+var url = process.env.URL || '';
 var renderPathPrefix = (
   process.env.RENDER_PATH_PREFIX ? 
     '/' + process.env.RENDER_PATH_PREFIX.replace(/^[\\/]+/, '').replace(/[\\/]+$/, '') :
@@ -41,6 +42,7 @@ logger.debug('Configuration');
 logger.debug('-----------------------------------------------------');
 logger.debug('PORT=' + process.env.PORT);
 logger.debug('MESSAGE=' + process.env.MESSAGE);
+logger.debug('URL=' + process.env.URL);
 logger.debug('RENDER_PATH_PREFIX=' + process.env.RENDER_PATH_PREFIX);
 logger.debug('HANDLER_PATH_PREFIX=' + process.env.HANDLER_PATH_PREFIX);
 logger.debug('KUBERNETES_NAMESPACE=' + process.env.KUBERNETES_NAMESPACE);
@@ -62,6 +64,7 @@ logger.debug('Handler: /');
 logger.debug('Serving from base path "' + handlerPathPrefix + '"');
 app.get(handlerPathPrefix + '/', function (req, res) {
     res.render('home', {
+      url: url,
       message: message,
       namespace: namespace,
       pod: podName,
