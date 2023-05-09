@@ -40,6 +40,10 @@ spec:
           - name: MESSAGE
             value: "{{ .Values.message }}"
           {{- end }}
+          {{- if .Values.url }}
+          - name: URL
+            value: "{{ .Values.url }}"
+          {{- end }}
           {{- if .Values.ingress.configured }}
           - name: HANDLER_PATH_PREFIX
             {{- if .Values.ingress.rewritePath }}
