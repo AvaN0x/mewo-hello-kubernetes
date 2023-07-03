@@ -1,12 +1,12 @@
 # Provide a custom message
-message: "La télé"
-url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+message: 'Test link'
+url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 
 # Remember to set service.type=ClusterIP if you are using an ingress
 ingress:
   configured: false
   rewritePath: true
-  pathPrefix: ""
+  pathPrefix: ''
 
 service:
   type: LoadBalancer
@@ -16,8 +16,8 @@ deployment:
   replicaCount: 3
   container:
     image:
-      repository: "avan0x/mewo-hello-kubernetes"
-      tag: "" # uses chart appVersion if not provided
+      repository: 'avan0x/mewo-hello-kubernetes'
+      tag: '' # uses chart appVersion if not provided
       pullPolicy: IfNotPresent
     port: 8080
 
@@ -31,4 +31,3 @@ deployment:
   tolerations: []
 
   affinity: {}
-
